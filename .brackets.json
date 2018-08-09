@@ -1,0 +1,6 @@
+{
+    "jscodehints.detectedExclusions": [
+        "C:/xampp/htdocs/trocowallet/www/modules/login/login.service.js",
+        "C:/xampp/htdocs/trocowallet/www/js/app.js"
+    ]
+}

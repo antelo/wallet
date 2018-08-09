@@ -1,0 +1,66 @@
+<style type="text/css">
+     .gallerympresa{
+        /*overflow: scroll;*/
+        white-space: nowrap;
+        height: 100%;
+    }
+    .gallerympresa .scroll {
+      min-width: 100%;
+    }
+    .gallerympresa img{ max-width: 50%;}
+</style>
+<ion-view view-title="">
+    <ion-content>
+        <ion-slide-box delegate-handle="empresa" active-slide="myActiveSlide" on-slide-changed="pagarChange($index);">
+            <ion-slide class="padding">
+                <h2 class="mBottom0">{{empresa.nombre}}</h2>
+                <p>Código de comercio: <strong>{{empresa.codigo_comercio}}</strong></p>
+                <div class="row">
+                    <div class="col">
+                        <div class="fsSemiBig">
+                            <star-rating rating-value="empresa.valoracion/2" no-update="true" data-max="5" class="rating"></star-rating>
+                        </div>
+                        <p>{{empresa.actividad}}</p>
+                    </div>
+                    <div class="col text-right">
+                            <a ng-if="empresasFavoritasStorage.indexOf(empresa.id) &gt; -1" ng-click="deleteEmpresaFavorita(empresa.id, $index)" class="positive">Quitar de favoritos</a>
+                            <a ng-if="empresasFavoritasStorage.indexOf(empresa.id) == -1" ng-click="AddEmpresaFavorita(empresa.id, empresasFavoritasStorage)" class="positive">Añadir a favoritos</a>
+                        </p>
+                        <p><a ng-click="ver_mas = !ver_mas" ng-init="ver_mas = true" class="positive">Ver más</a></p>
+                    </div>
+                </div>
+                <div class="row" ng-hide="ver_mas">
+                    <div class="card mTop0">
+                      <div class="item item-text-wrap">
+                        Datos contacto
+                      </div>
+                    </div>
+                </div>
+                <div ng-show="ver_mas"></div>
+                <button class="button button-large button-positive button-block" ng-click="goToPagar()">
+                  PAGAR
+                </button>
+                <ion-scroll direction="x" class="gallerympresa">
+                    <a href=""><img ng-src="{{img}}" class="padding" ng-repeat="img in empresa.imgs track by $index"></a>
+                <ion-scroll>
+            </ion-slide>
+            <ion-slide  class="padding">
+                <div class="hide-on-keyboard-open">
+                    <p>Pagar a:</p>
+                    <h2>{{empresa.nombre}}</h2>
+                </div>
+                <!-- ng-click="pagarTicket(importe);" lo puse en el btn porque ng-submit en el form no enviaba al ctrl-->
+                <form name="pagarForm">
+                    <div class="list list-inset">
+                      <label class="item item-input">
+                        <input type="number" ng-model="importe" name="importe" placeholder="Importe" required>
+                      </label>
+                    </div>
+                    <button ng-click="pagarTicket(importe);" ng-disabled='!pagarForm.$valid' class="button button-large button-positive button-block">
+                      PAGAR
+                    </button>
+                </form>
+            </ion-slide>
+        </ion-slide-box>
+    </ion-content>
+</ion-view>

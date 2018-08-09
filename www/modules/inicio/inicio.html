@@ -1,0 +1,16 @@
+<ion-content>
+<div class="row row-center bgTroco enlIni iniPagar" nav-direction="forward" ui-sref="index.pagar.cercanos" style="height:{{heightW}}px">
+    <div>
+        <div><i class="icon-pagar"></i> Pagar</div>
+        <p>Capacidad compra: <strong>{{ user.Capacidad_pago.Cantidad | currency }}</strong></p>
+        <input type="number" placeholder="codigo de comercio">
+    </div>
+</div>
+<div class="row row-center enlIni iniCobrar" nav-direction="forward" ui-sref="index.cobrar" style="height:{{heightW}}px">
+    <div>
+        <div><i class="icon-cobrar"></i> Cobrar</div>
+        <p>Pedido máximo: <strong>{{ user.Obligacion_venta.Cantidad | currency }}</strong></p>
+        <p class="text-left">Codigo de comercio:<br><strong>{{user.Codigo_comercio}}</strong></p>
+    </div>
+</div>
+</ion-content>

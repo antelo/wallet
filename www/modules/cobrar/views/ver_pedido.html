@@ -1,0 +1,29 @@
+<ion-view view-title="">
+    <ion-content><a ion-back>Volver</a>
+        <div class="row">
+          <div class="col text-left">{{pedido.Numero}}</div>
+          <div class="col text-right">{{pedido.Fecha}}</div>
+        </div>
+        <hr>
+        <div class="row">
+            <h2>{{pedido.Comprador.Razon_social}}</h2>
+        </div>
+        <div class="row">
+            <h4 class="balanced text-center">{{pedido.Importe}}€</h4>
+        </div>
+        <hr>
+        <div class="row">
+            <p>Si quieres puedes:</p>
+        </div>
+        <div class="row  stable-bg">
+            <div class="col col-center">Valorar al comprador:</div>
+            <div class="col col-center"> <div><star-rating rating-value="3" data-max="5" class="rating" on-rating-selected="valorarPedido(rating)"></star-rating></div></div>
+        </div>
+        <div class="row  energized-bg">
+            <div class="col col-center">Guardar ticket de compra</div>
+        </div>
+    </ion-content>
+     <div class="bar bar-footer">
+  <div class="title"><p>Hay algún problema? <a ui-sref="index.cobrarDevolucion({id:pedido.Id})">Tramitar devolución</a></p></div>
+</div>
+</ion-view>
